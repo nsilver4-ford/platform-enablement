@@ -11,6 +11,7 @@ Ford developers try to build APIs to be as self-documenting as possible, but his
 - [API Catalog](fields.html) provides a list of all Ford's available APIs
 - [API calls](console/) gives you a hands-on experience of API operations with an interactive console.
 - [Frequently Asked Questions (FAQ)](FAQ.html) Here are answers to some frequently asked questions.
+- [Troubleshoot](troubleshooting.html) An inline Swagger editor for troubleshooting your code.
 - [Contact Us](contact_us.html) If you need support or need to get in touch, this is the place to look.
 
 
