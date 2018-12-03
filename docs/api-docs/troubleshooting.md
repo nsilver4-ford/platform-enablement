@@ -6,9 +6,8 @@ layout: default
 ### Troubleshoot with Swagger
 
 <iframe id="inlineFrameExample"
-    title="Inline Frame Example"
-    width=inherit;
-    height=auto;
+    title="Swagger editor"
+    style="width: auto; height: inherit;"
     src="https://editor.swagger.io/">
 </iframe>
 
