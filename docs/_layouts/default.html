@@ -1,21 +1,49 @@
 ---
-published: true
-layout: default
-
 ---
-### Overview 
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>Prototype City Pairs API Documentation</title>
+  <link rel="stylesheet" href="../static/css/normalize.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-This section should contain an overview of the data provided and the API purpose.
+  <!--[if IE]>
+  <link rel="stylesheet" href="../static/css/for-ie-only.css">
+  <![endif]-->
+</head>
+<body>
 
 
-##### Using the API
-We built the API to be as self-documenting as possible, but if you find yourself overwhelmed, we organized this site into four major areas.
+  <header class="header cf" role="banner">
+      {% include header.html %}
+  </header>
 
-- [Getting started](getting_started.html) introduces you to the operations offered by the API.
-- [API calls](console/) gives you a hands-on experience of those operations with an interactive console.
-- [Field reference](fields.html) lists and describes the type of information provided by the API.
-- [Frequently Asked Questions (FAQ)](FAQ.html) Here are answers to some frequently asked questions.
-- [Contact Us](contact_us.html) If you need support or need to get in touch, this is the place to look.
+  <div class="wrap">
+    <div class="content">
 
+    <aside>
+    {% include nav.html %}
+    </aside>
 
-<body id="overview"></body>
+    <section class="main-content" role="main">
+      {{ content }}
+    </section>
+
+    </div>
+  </div> <!--wrap-->
+
+    <footer class="footer cf" role="contentinfo">
+      <div class="wrap">
+        {% include footer.html %}
+      </div>
+    </footer>
+  <script src="../static/js/docs.min.js"></script>
+  <script type="text/javascript" src="../static/js/expandables.js"></script>
+</body>
+</html>
