@@ -284,8 +284,8 @@ dt {
 
 /* LINKS */
 a {
-    border-bottom: 1px dotted #0072CE;
-    color: #0072CE;
+    border-bottom: 1px dotted #f7c433;
+    color: #f7c433;
     text-decoration: none;
 }
 
@@ -302,9 +302,9 @@ a:hover {
 }
 
 a:focus {
-    border-bottom: 1px solid #0072ce;
+    border-bottom: 1px solid #f7c433;
     outline: thin dotted;
-    color: #0072ce;
+    color: #f7c433;
     text-decoration: none;
 }
 
@@ -599,7 +599,7 @@ footer a:visited {
 }
 
 footer a:hover {
-    border-bottom: 1px dotted #0072CE;
+    border-bottom: 1px dotted #f7c433;
 }
 
 .mobile-warning {
@@ -799,7 +799,7 @@ footer a:hover {
   font-weight: normal !important;
 }
 .expandable_link {
-  color: #0072ce;
+  color: #f7c433;
   font-family: "Avenir Next", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -931,12 +931,12 @@ button.expandable_header {
         display: block;
         width: 100%;
         padding: .625em 0;
-        border: dotted #0072ce;
+        border: dotted #f7c433;
         border-width: 1px 0;
     }
 
     .expandable_header__jump-link .expandable_label,.expandable_header__jump-link .expandable_link {
-        color: #0072ce;
+        color: #f7c433;
     }
 
     .expandable_header__jump-link:hover,.expandable_header__jump-link.hover {
@@ -1389,14 +1389,14 @@ del {
 
 /* Selected text */
 ::-moz-selection {
-    background: #0072ce;
+    background: #f7c433;
     color: #fff;
     text-shadow: none;
 }
 
  /* Selected text */
 ::selection {
-    background: #0072ce;
+    background: #f7c433;
      color: #fff;
      text-shadow: none;
 }
