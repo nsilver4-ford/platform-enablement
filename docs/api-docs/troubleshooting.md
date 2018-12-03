@@ -7,8 +7,8 @@ layout: default
 
 <iframe id="inlineFrameExample"
     title="Inline Frame Example"
-    width="900"
-    height="2000"
+    width=inherit;
+    height=auto;
     src="https://editor.swagger.io/">
 </iframe>
 
