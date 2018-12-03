@@ -3,11 +3,9 @@ published: true
 layout: default
 
 ---
-### Overview 
+### Welcome
 
-This section should contain an overview of the data provided and the API purpose.
-
-We try to build our APIs to be as self-documenting as possible, but historically, we haven't been so good at making the output co-located or easily accessible. The purpose of this portal is to consolidate all our API data into one central repository. Get started below:
+Ford developers try to build APIs to be as self-documenting as possible, but historically, we haven't been so good at making the output co-located or easily accessible. The purpose of this portal is to consolidate all our API data into one central repository. Get started below:
 
 - [Getting started](getting_started.html) gives you details and support for general API questions, such as gateways, hosting details, authentication and access.
 - [API Catalog](fields.html) provides a list of all Ford's available APIs
