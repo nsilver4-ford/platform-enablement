@@ -7,9 +7,9 @@ layout: default
 
 <iframe id="inlineFrameExample"
     title="Inline Frame Example"
-    width="300"
-    height="200"
-    src="https://www.editor.swagger.io">
+    width="900"
+    height="2000"
+    src="https://editor.swagger.io/">
 </iframe>
 
 <body id="overview"></body>
