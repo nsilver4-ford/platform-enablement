@@ -3,7 +3,7 @@ published: true
 layout: default
 
 ---
-### Swagger Editor for Troubleshooting
+### Troubleshoot with Swagger
 
 <iframe id="inlineFrameExample"
     title="Inline Frame Example"
