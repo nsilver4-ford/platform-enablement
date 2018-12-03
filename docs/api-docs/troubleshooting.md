@@ -7,7 +7,7 @@ layout: default
 
 <iframe id="inlineFrameExample"
     title="Swagger editor"
-    style="width: 66%; height: 100%;"
+    style="width: 900px; height: 100px;"
     src="https://editor.swagger.io/">
 </iframe>
 
