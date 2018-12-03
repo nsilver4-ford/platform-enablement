@@ -1,8 +1,10 @@
 ---
-published: true
 layout: default
+title: Troubleshooting
+nav: troubleshooting
 
 ---
+
 ### Troubleshoot with Swagger
 
 <iframe id="inlineFrameExample"
@@ -11,4 +13,4 @@ layout: default
     src="https://editor.swagger.io/">
 </iframe>
 
-<body id="overview"></body>
+<body id="troubleshooting"></body>
