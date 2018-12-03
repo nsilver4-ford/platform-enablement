@@ -1,6 +1,7 @@
 ---
-published: true
 layout: default
+title: Catalog
+nav: catalog
 
 ---
 ### API Catalog
@@ -8,4 +9,4 @@ layout: default
 lorem ipsum stuff stff.
 
 
-<body id="overview"></body>
+<body id="catalog"></body>
