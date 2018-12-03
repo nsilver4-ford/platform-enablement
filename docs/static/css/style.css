@@ -1222,7 +1222,6 @@ button.expandable_header {
     .header .logo {
     float: right;
     /*margin: 1.25em 1em;*/
-    width: 210px;
     display: block;
     }
 } 
