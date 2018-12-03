@@ -369,7 +369,7 @@ nav li:hover {
 
 nav li:active {
     color: #75787b;
-    border-left: 4px solid #09C;
+    border-left: 4px solid #ffd22f;
     background-color: transparent;
     border-bottom: 1px solid #d0d0ce;
     padding-left: 0;
@@ -466,7 +466,7 @@ ul.repo-list.no-padding {
 }
 
 .header {
-    border-bottom: 4px solid #09C;
+    border-bottom: 4px solid #ffd22f;
     width: 100%;
     background-color: #fff;
     /*position: fixed;*/
