@@ -1,16 +1,9 @@
-API Documentation Template
+API Central: The APIary. 
 ====================
 
  ***Coming in early 2019: Updated API documentation template***
 
-This a documentation template for GSA APIs provided by GSA Digital Services to provide a consistent look and feel for GSA APIs.  
-
-Thanks to CFPB team for creating this model and for furthering open source in government.  Additional thanks to the 18F and SAM (IAE) teams as well as several in the private sector.
-
-## Using This Template In GitHub Pages
-Currently this template is configured to work on GitHub pages. The easiest way to use this template is by cloning this repo and using it as a starting point for your own project. 
-
-The source URL for this repository (used in both methods below) is: https://github.com/GSA/api-documentation-template.git
+This is a thing we're gonna do that we can't talk about yet because it's super-secret, dawg. Keep an eye out. We'll be on the internal servers soon and then all kinds of neat stuff will happen.
 
 ### Cloning this repository from the Command Line
 * If you have enabled two-factor authentication (GSA requirement) you will need to [create an access token for the command line](https://help.github.com/articles/creating-an-access-token-for-command-line-use/). (Save the token and use in next step.)
