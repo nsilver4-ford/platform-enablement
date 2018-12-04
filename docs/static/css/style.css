@@ -1102,7 +1102,8 @@ button.expandable_header {
     /* LAYOUT */
 
     aside {
-        position: sticky;
+        position: absolute;
+		overflow: auto;
         width: 11em;
         margin-right: .75em;
         margin-left: .75em;
