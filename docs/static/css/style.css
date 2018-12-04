@@ -1102,7 +1102,7 @@ button.expandable_header {
     /* LAYOUT */
 
     aside {
-        position: fixed;
+        position: absolute;
         width: 11em;
         margin-right: .75em;
         margin-left: .75em;
@@ -1200,7 +1200,6 @@ button.expandable_header {
         width: 13.75em;
         margin-right: 0;
         margin-left: 0;
-		position: fixed;
     }
 
     .main-content {
