@@ -28,9 +28,17 @@
   -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
-$("[id^='button']").click(function(){
-        $("#info" + this.id.replace("button", "")).toggle('slow');
- });
+$(document).ready(function(){
+  $('#eventDescriptions>div').hide();
+  $('#eventTitles a').click(function(){
+    var target = $(this).attr("rel");
+    $(target).show('slow');
+  });
+
+  $('#eventDescriptions a.close').click(function(){
+    $(this).parent().parent().hide('slow');
+  })
+});
 </script>
 <!--<script src="js/show-hide.js"></script>
 <!--  <script src='js/coming-soon.js' type='text/javascript'></script> -->
@@ -89,17 +97,18 @@ $("[id^='button']").click(function(){
 
 <p>This is a paragraph with little content.</p>
 <p>This is another small paragraph.</p>-->
-<div id="button1" class="button">button1</div>
-<div id="button2" class="button">button2</div>
-<div id="button3" class="button">button3</div>
-<div id="button4" class="button">button4</div>
-<div id="button5" class="button">button5</div>
-
-<div id="info1" class="button">info1</div>
-<div id="info2" class="button">info2</div>
-<div id="info3" class="button">info3</div>
-<div id="info4" class="button">info4</div>
-<div id="info5" class="button">info5</div>
+<div id="eventDescriptions">
+  <div id="meet_growlab">BLAH BLAH BLAH
+    <p><a href="#growlab" class="close">Close</a></p>
+  </div>
+  <div id="buddy_tv">BLAH BLAH BLAH
+    <p><a href="#buddytv" class="close">Close</a></p>
+  </div>
+</div>
+<ul id="eventTitles">
+    <li><a href="#" id="growlab" rel="#meet_growlab">Meet GrowLab - Canada’s Y-Combinator Arrives in Vancouver (June 24, 2011)</a></li>
+    <li><a href="#" id="buddytv" rel="#buddy_tv">Building the Web's Best Entertainment-Based Community Site: Andy Liu, CEO and Founder of BuddyTV (April 1, 2011)</a></li>
+</ul>
 </section>
 
 </div>
