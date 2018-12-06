@@ -1,4 +1,6 @@
- var $button = $('#myButton'),
+document.write("Hello World!");
+
+var $button = $('#myButton'),
   $text   = $('#myText'),
   visible = true;
 
