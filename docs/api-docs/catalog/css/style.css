@@ -1147,7 +1147,7 @@ del {
 }
 
 /* show/hide styling that can still be read by screen readers */
-.bomb-hide {
+.hide {
    position: absolute !important;
    top: -9999px !important;
    left: -9999px !important;
