@@ -1145,3 +1145,15 @@ del {
 #swagger-ui-container ul {
     margin-left: 0;
 }
+
+/* show/hide styling that can still be read by screen readers */
+.bomb-hide {
+   position: absolute !important;
+   top: -9999px !important;
+   left: -9999px !important;
+}
+
+/*deprecated! Poor accessibility! Don't use!
+.this-will-not-be-read {
+   display: none !important;
+}*/
