@@ -5,12 +5,12 @@ var $button = $('#myButton'),
 $button.click(function(){
 if ( visible ) {
   $text.slideUp('fast',function(){
-    $text.addClass('hide')
+    $text.addClass('bomb-hide')
          .slideDown(0);
   });
 } else {
   $text.slideUp(0,function(){
-    $text.removeClass('hide')
+    $text.removeClass('bomb-hide')
          .slideDown('fast');
   });
 }
