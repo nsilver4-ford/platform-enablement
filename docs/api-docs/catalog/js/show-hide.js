@@ -1,6 +1,6 @@
 var $button = $('#myButton'),
   $text   = $('#myText'),
-  visible = true;
+  visible = false;
 
 $button.click(function(){
 if ( visible ) {
