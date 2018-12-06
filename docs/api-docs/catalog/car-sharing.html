@@ -29,9 +29,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
 $(document).ready(function(){
-    $("button").click(function(){
-        $("p").toggle();
-    });
+var $button = $('#myButton'),
+  $text   = $('#myText'),
+  visible = true;
+
+$button.click(function(){
+if ( visible ) {
+  $text.slideUp('fast',function(){
+    $text.addClass('hide')
+         .slideDown(0);
+  });
+} else {
+  $text.slideUp(0,function(){
+    $text.removeClass('hide')
+         .slideDown('fast');
+  });
+}
+visible = ! visible;
 });
 </script>
 <!--<script src="js/show-hide.js"></script>
