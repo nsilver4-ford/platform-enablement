@@ -1,18 +1,10 @@
-var $button = $('#myButton'),
-    $text   = $('#myText'),
-    visible = true;
-
-$button.click(function() {
-  if (visible) {
-    $text.slideUp('fast',function() {
-      $text.addClass('hide')
-           .slideDown(0);
-    });
-  } else {
-    $text.slideUp(0,function() {
-      $text.removeClass('hide')
-           .slideDown('fast');
-    });
-  }
-  visible = !visible;
+$(document).ready(function(){
+  $('#eventDescriptions>div').hide();
+  $('#eventTitles a').click(function(){
+    var target = $(this).attr("rel");
+    $(target).show('slow');
+  });
+  $('#eventDescriptions a.close').click(function(){
+    $(this).parent().parent().hide('slow');
+  })
 });
