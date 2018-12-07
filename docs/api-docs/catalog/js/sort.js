@@ -7,4 +7,4 @@ var $btns = $('.btn').click(function() {
   }
   $btns.removeClass('active');
   $(this).addClass('active');
-})
+});
