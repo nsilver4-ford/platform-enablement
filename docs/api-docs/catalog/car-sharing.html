@@ -10,6 +10,7 @@
   
   <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
   <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/sort.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
@@ -26,7 +27,6 @@
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <title>Swagger UI</title>
   -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/show-hide.js"></script>
   <script src='js/sort.js' type='text/javascript'></script>
 </head>
@@ -78,91 +78,52 @@
     <section class="main-content" role="main">
 
       <h3 id='api_calls'>Example API List</h3>
-<button class="active btn" id="all">Show All</button>
-<button class="btn" id="a_team">The A Team</button>
-<button class="btn" id="b_team">The B Team</button>
-<button class="btn" id="c_team">The C Team</button>
-<button class="btn" id="d_tea,">The D Team</button>
-<div id="team"><div id="eventTitles">
-	<div class="shadow">
-	<div class="c_team">
-		<div class ="pretty-background"> <!--This is what makes the pretty background.-->
-			<p><strong>API Name</strong><br>
-			My Super Duper Sweet API</p>
-      <strong>Owner(s)</strong><br>
-      The Cool Team:<br>
-      <ul>
-      <li><a href="">ALbert Einstein</a></li>
-      <li><a href="">Trey Parker</a></li>
-      <li><a href="">Marie Curie</a></li>
-      </ul>
-			<p><strong>API Description</strong><br>
-			This API takes all the stuff and connects all the things to all the social media.</p>
+<div id="buttnicks">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('team_a')"> Team A</button>
+  <button class="btn" onclick="filterSelection('team_b')"> Team B</button>
+  <button class="btn" onclick="filterSelection('team_c')"> Team C</button>
+  <button class="btn" onclick="filterSelection('team_d')"> Team D</button>
+</div>
+<div class="container shadow csl pretty-background">
+  <div class="catalog team_a">
+  <p><strong>API Description</strong><br>
+			This service facilitates the FordPass car share service and allows for activities such as managing favorites, locations and reservations.</p>
 			<p><strong>API Capabilities</strong><br>
-			<a href='javascript:void(),' id="superduper" rel="#super_duper"><button>
-		See more
-		</button></a>
-			<div id="eventDescriptions">
-			  <div id="super_duper">All those long descriptions of methods that are annoying as hell. 
-				<p><a href='javascript:void();' class="close" ><button>
-		  Close
-		  </button></a></p>
-			  </div>
+		<input type ="button" onclick="toggle_visibility('foo'); toggle_text('bar');" id="bar" value="Expand">
+			<div id="foo" style="display:none;" >
+					<ul>
+						<li>Retrieving, adding, and deleting a favorite</li>
+						<li>Retrieving, adding, updating, and deleting a reservation</li>
+						<li>Retrieving a group of reservations</li>
+						<li>Retrieving, and updating an account</li>
+						<li>Retrieving stations, vehicle data, and location or group of locations</li>
+						<li>Performing a search</li>
+						<li>Make a reservation</li>
+						<li>Logging a user out</li>
+					</ul>
 			</div>
-		</div></div>
-	<br><br>
-		<div class="a_team b_team"><div class ="pretty-background"> <!--This is what makes the pretty background.-->
-			<p><strong>API Name</strong><br>
-			My Kind of Crappy API</p>
-     <strong>Owner(s)</strong><br>
-      The Cool Team:<br>
-      <ul>
-      <li><a href="">ALbert Einstein</a></li>
-      <li><a href="">Trey Parker</a></li>
-      <li><a href="">Marie Curie</a></li>
-      </ul>
-			<p><strong>API Description</strong><br>
-			This API doesn't really work very well. I wouldn't use it if i were you</p>
+  </div></div>
+  
+  <div class="container shadow csl pretty-background">
+  <div class="catalog team_b">
+  <p><strong>API Description</strong><br>
+			this is blah blah blah</p>
 			<p><strong>API Capabilities</strong><br>
-			<a href='javascript:void(),' id="crappy" rel="#craptacular"><button>
-		See more
-		</button></a>
-			<div id="eventDescriptions">
-			  <div id="craptacular">All those long descriptions of methods that are annoying as hell. 
-				<p><a href='javascript:void();' class="close"><button>
-		  Close
-		  </button></a></p>
-			  </div>
+		<input type ="button" onclick="toggle_visibility('foo'); toggle_text('bar');" id="bar" value="Expand">
+			<div id="foo" style="display:none;" >
+					<ul>
+						<li>Retrieving, adding, and deleting a favorite</li>
+						<li>Retrieving, adding, updating, and deleting a reservation</li>
+						<li>Retrieving a group of reservations</li>
+						<li>Retrieving, and updating an account</li>
+						<li>Retrieving stations, vehicle data, and location or group of locations</li>
+						<li>Performing a search</li>
+						<li>Make a reservation</li>
+						<li>Logging a user out</li>
+					</ul>
 			</div>
-		</div></div>
-	<br><br>
-		<div class="d_team"><div class ="pretty-background"> <!--This is what makes the pretty background.-->
-			<p><strong>API Name</strong><br>
-			My Not too Bad API</p>
-      <strong>Owner(s)</strong><br>
-      The Cool Team:<br>
-      <ul>
-      <li><a href="">ALbert Einstein</a></li>
-      <li><a href="">Trey Parker</a></li>
-      <li><a href="">Marie Curie</a></li>
-      </ul>
-			<p><strong>API Description</strong><br>
-			Meh, not the best work I've ever done..
-			</p>
-			<p><strong>API Capabilities</strong><br>
-			<a href='javascript:void(),' id="meh" rel="#so_so"><button>
-		See more
-		</button></a>
-			<div id="eventDescriptions">
-			  <div id="so_so">All those long descriptions of methods that are annoying as hell. 
-				<p><a href='javascript:void();' class="close"><button>
-		  Close
-		  </button></a></p>
-			  </div>
-			</div>
-		</div></div>
-	</div>
-</div></div>
+  </div></div>
 </section>
 
 </div>
