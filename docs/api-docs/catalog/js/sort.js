@@ -1,7 +1,7 @@
 filterSelection("all")
 function filterSelection(team) {
   var x, i;
-  x = document.getElementsByClassName("catalog");
+  x = document.getElementsByClassName("catalog_sort");
   if (team == "all") team = "";
   for (i = 0; i < x.length; i++) {
     RemoveCssClass(x[i], "show");
