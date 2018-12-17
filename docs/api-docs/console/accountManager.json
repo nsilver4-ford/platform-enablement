@@ -1,0 +1,693 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Account Manager",
+    "version": "1.0",
+    "description": "This Microservice is used to do all Account Management operations. This AI will lookup Zuora Account Ids for both B2B and B2C customers and create Zuora Account Ids (Parent-> Child) for Fleet customers as needed."
+  },
+  "host": "qa.api.mps.ford.com",
+  "basePath": "/api/account-manager",
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "apiKeyHeader": {
+      "type": "apiKey",
+      "name": "Application-Id",
+      "in": "header"
+    },
+    "apiKeyQuery": {
+      "type": "apiKey",
+      "name": "subscription-key",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ],
+  "paths": {
+    "/v2/create": {
+      "post": {
+        "description": "Create Account for a given user",
+        "operationId": "5ac62fa930e8f30a1ca1cd96",
+        "summary": "createAccountUsingPOST",
+        "tags": [
+          "accounts-controller"
+        ],
+        "parameters": [
+          {
+            "name": "createAccountJson",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateAccountJson"
+            },
+            "description": "createAccountJson"
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/v2/invoice/pdf/{pdfkey}": {
+      "get": {
+        "description": "Get Invoice PDF by PDF Download ID",
+        "operationId": "5ac62fa930e8f30a1ca1cd97",
+        "summary": "getInvoicePDFUsingGET",
+        "tags": [
+          "accounts-direct-controller"
+        ],
+        "parameters": [
+          {
+            "name": "pdfkey",
+            "in": "path",
+            "description": "pdfkey",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InvoicePdfResponeJson"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/v2/invoices/{accountId}": {
+      "get": {
+        "description": "Get Invoices by Zuora Account ID",
+        "operationId": "5ac62fa930e8f30a1ca1cd98",
+        "summary": "getInvoicesByAccountIdUsingGET",
+        "tags": [
+          "accounts-direct-controller"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InvoiceResponseJson"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/v2/payments/{accountId}": {
+      "get": {
+        "description": "Get Payments by Zuora Account ID",
+        "operationId": "5ac62fa930e8f30a1ca1cd99",
+        "summary": "getPaymentsByAccountIdUsingGET",
+        "tags": [
+          "accounts-direct-controller"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PaymentResponseJson"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/v2/accountBalance/{accountKey}": {
+      "get": {
+        "description": "Retrieve the most updated payment for a given Zuora account number",
+        "operationId": "5b2bbfd5a8f8e01cb880946e",
+        "summary": "getAccountBalanceUsingGET",
+        "tags": [
+          "accounts-direct-controller"
+        ],
+        "parameters": [
+          {
+            "name": "accountKey",
+            "in": "path",
+            "description": "accountKey",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "country-code",
+            "in": "header",
+            "description": "country-code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AccountMetricsResponseJson"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/v2/health": {
+      "get": {
+        "description": "getHello",
+        "operationId": "5b2bbfd5a8f8e01cb880946f",
+        "summary": "getHelloUsingGET",
+        "tags": [
+          "accounts-controller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/V2HealthGet200**Response"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "*/*"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AccountMetrics": {
+      "type": "object",
+      "properties": {
+        "balance": {
+          "type": "number"
+        },
+        "contractedMrr": {
+          "type": "number"
+        },
+        "creditBalance": {
+          "type": "number"
+        },
+        "totalInvoiceBalance": {
+          "type": "number"
+        }
+      }
+    },
+    "AccountMetricsResponseJson": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SumoError"
+          }
+        },
+        "lastRequested": {
+          "type": "string"
+        },
+        "requestStatus": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/AccountMetrics"
+        }
+      }
+    },
+    "CreateAccountJson": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/User"
+        }
+      }
+    },
+    "Invoice": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "accountName": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        },
+        "body": {
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "creditBalanceAdjustmentAmount": {
+          "type": "number"
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "id": {
+          "type": "string"
+        },
+        "invoiceDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "invoiceFiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceFile"
+          }
+        },
+        "invoiceItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceItem"
+          }
+        },
+        "invoiceNumber": {
+          "type": "string"
+        },
+        "invoiceTargetDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "InvoiceFile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "pdfFileUrl": {
+          "type": "string"
+        },
+        "versionNumber": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "InvoiceItem": {
+      "type": "object",
+      "properties": {
+        "chargeAmount": {
+          "type": "number",
+          "format": "float"
+        },
+        "chargeDate": {
+          "type": "string"
+        },
+        "chargeDescription": {
+          "type": "string"
+        },
+        "chargeId": {
+          "type": "string"
+        },
+        "chargeName": {
+          "type": "string"
+        },
+        "chargeType": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "processingType": {
+          "type": "string"
+        },
+        "productName": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "servicesEndDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "servicesStartDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "subscriptionName": {
+          "type": "string"
+        },
+        "taxAmount": {
+          "type": "number"
+        },
+        "unitOfMeasure": {
+          "type": "string"
+        }
+      }
+    },
+    "InvoicePdf": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "format": "byte"
+        },
+        "pdfId": {
+          "type": "string"
+        }
+      }
+    },
+    "InvoicePdfResponeJson": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SumoError"
+          }
+        },
+        "lastRequested": {
+          "type": "string"
+        },
+        "requestStatus": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/InvoicePdf"
+        }
+      }
+    },
+    "InvoiceResponse": {
+      "type": "object",
+      "properties": {
+        "invoices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Invoice"
+          }
+        }
+      }
+    },
+    "InvoiceResponseJson": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SumoError"
+          }
+        },
+        "lastRequested": {
+          "type": "string"
+        },
+        "requestStatus": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/InvoiceResponse"
+        }
+      }
+    },
+    "PaidInvoice": {
+      "type": "object",
+      "properties": {
+        "appliedPaymentAmount": {
+          "type": "number"
+        },
+        "invoiceId": {
+          "type": "string"
+        },
+        "invoiceNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "Payment": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "accountName": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "effectiveDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "gatewayTransactionNumber": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "paidInvoices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaidInvoice"
+          }
+        },
+        "paymentMethodId": {
+          "type": "string"
+        },
+        "paymentNumber": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "PaymentResponseJson": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SumoError"
+          }
+        },
+        "lastRequested": {
+          "type": "string"
+        },
+        "requestStatus": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/PaymentsResponse"
+        }
+      }
+    },
+    "PaymentsResponse": {
+      "type": "object",
+      "properties": {
+        "payments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Payment"
+          }
+        }
+      }
+    },
+    "SumoError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "string"
+        },
+        "statusContext": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "accountKey": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "customerType": {
+          "type": "string"
+        },
+        "languageCode": {
+          "type": "string"
+        },
+        "parentId": {
+          "type": "string"
+        },
+        "profileStore": {
+          "type": "string",
+          "enum": [
+            "CDR",
+            "CSDN",
+            "SCACAP",
+            "FordCRM",
+            "LincolnCRM",
+            "OPUS",
+            "TelematicsCRM",
+            "Unknown"
+          ]
+        },
+        "state": {
+          "type": "string"
+        },
+        "sumoError": {
+          "$ref": "#/definitions/SumoError"
+        },
+        "userGuid": {
+          "$ref": "#/definitions/UserGuid"
+        },
+        "userType": {
+          "type": "string",
+          "enum": [
+            "SUBSCRIPTION_HOLDER",
+            "SECONDARY",
+            "SUBSCRIPTION_HOLDER_WITH_SECONDARY"
+          ]
+        }
+      }
+    },
+    "UserGuid": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "V2HealthGet200**Response": {
+      "type": "string"
+    }
+  },
+  "tags": [
+    {
+      "name": "accounts-direct-controller",
+      "description": "Accounts Direct Controller"
+    },
+    {
+      "name": "accounts-controller",
+      "description": "Accounts Controller"
+    }
+  ]
+}
