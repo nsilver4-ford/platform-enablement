@@ -1,0 +1,290 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Auto Complete API",
+    "version": "1.0",
+    "description": "Auto Complete API Overview The Composite Service Auto Complete API is a REST-based service communicating via HTTPS and JSON that facilitates the FP Type Ahead functionality. All requests to the API must be via HTTPS (SSL).           ### Testing account    Contact document author to set up.     ***Changes***   | Version | Changes |   |  ------------ | ------------- |   | 0.1 | Document set up. |   | 0.2 | Added security. |   | 0.3 | Added field \"query\" in response of /autoComplete/suggestion. |   | 1.0 | Released. Minor updates to description. |     | 1.0.1 | Update basePath, endpoints, changed POC to Percy and add license section for APIM update |    #### ---------------------------------------------------------------    "
+  },
+  "host": "qa.api.mps.ford.com",
+  "basePath": "/api/autocomplete",
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "apiKeyHeader": {
+      "type": "apiKey",
+      "name": "Application-Id",
+      "in": "header"
+    },
+    "apiKeyQuery": {
+      "type": "apiKey",
+      "name": "subscription-key",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ],
+  "paths": {
+    "/v2/suggestion": {
+      "post": {
+        "description": "Returns a list of possible Points of Interest or brands based on the original query string in the request.  ** Sort_by Value Lookup Table (WIP) **   Key | Value      ------------ | -------------     1 | query first (default)     2 | entity first ",
+        "operationId": "5b198b49a8f8e0138c330444",
+        "summary": "v2SuggestionPost",
+        "tags": [
+          "Suggestion"
+        ],
+        "parameters": [
+          {
+            "name": "application-id",
+            "in": "header",
+            "description": "Identifies that the origin of request.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "Secret code to identify the client.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "The only value accepted is \"application/json\".",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "suggestionInputBody",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/SuggestionInputBody"
+            },
+            "description": "TBD"
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Suggestions made based on the input parameters.",
+            "schema": {
+              "$ref": "#/definitions/SuggestionReturn"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Parameter validation error. E.g., input parameters with missing, empty, out-of-bound values or invalid format. Refer to object \"status\" for details.",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "401": {
+            "description": "Authorization error. E.g., missing, empty, or wrong values of field \"api-key\". Refer to object \"status\" for details.",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/GenericResponse"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "GenericResponse": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "request_time": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "required": [
+        "errorCode",
+        "message"
+      ],
+      "properties": {
+        "errorCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": 2111000
+        },
+        "message": {
+          "type": "string",
+          "example": "OK"
+        }
+      }
+    },
+    "SuggestionInputBody": {
+      "type": "object",
+      "required": [
+        "device",
+        "search_details"
+      ],
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/SuggestionInputBodyDevice"
+        },
+        "search_details": {
+          "$ref": "#/definitions/SuggestionInputBodySearchDetails"
+        }
+      },
+      "description": "Input values of a request. "
+    },
+    "SuggestionInputBodyDevice": {
+      "type": "object",
+      "required": [
+        "current_lat",
+        "current_lng"
+      ],
+      "properties": {
+        "current_lat": {
+          "type": "number",
+          "format": "double",
+          "example": 34.1988,
+          "description": "Latitude of the device making the call to the CSL. If unknown, pass a value of -999.999."
+        },
+        "current_lng": {
+          "type": "number",
+          "format": "double",
+          "example": -118.4987,
+          "description": "Longitude of the device making the call to the CSL. If unknown, pass a value of -999.999."
+        }
+      }
+    },
+    "SuggestionInputBodySearchDetails": {
+      "type": "object",
+      "required": [
+        "query",
+        "search_lat",
+        "search_lng"
+      ],
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "example": 15,
+          "description": "Maximum number of results in response. Defaults to ten (10) when not present."
+        },
+        "locale": {
+          "type": "string",
+          "example": "en-gb",
+          "description": "The default value is \"en-us\" when not present."
+        },
+        "query": {
+          "type": "string",
+          "example": "123 Mai",
+          "description": "The input string that suggestions will be made on. The minimum length is three (3) letters/numbers or two (2) characters. It could be partial/full landmark name, partial/full street address or partial/full name of a destination category."
+        },
+        "search_lat": {
+          "type": "number",
+          "format": "double",
+          "example": 34.1988,
+          "description": "Latitude of the center point of search."
+        },
+        "search_lng": {
+          "type": "number",
+          "format": "double",
+          "example": -118.4987,
+          "description": "Longitude of the center point of search."
+        },
+        "sort_by": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "The field by which the results are ordered. The default value is 1 when not present. See Sort_by Value Lookup Table for other supported values."
+        },
+        "sort_order": {
+          "type": "string",
+          "example": "asc",
+          "description": "The only accepted values include \"asc\" for ascending order, and \"desc\" for descending order. The default value is \"desc\" when not present. This field is ignored when value of \"sort_by\" is set to 1 or 2."
+        }
+      }
+    },
+    "SuggestionReturn": {
+      "type": "object",
+      "properties": {
+        "request_time": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "suggestions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SuggestionReturnSuggestions"
+          }
+        }
+      },
+      "description": "Suggestion results."
+    },
+    "SuggestionReturnSuggestions": {
+      "type": "object",
+      "required": [
+        "label",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "P-3922906",
+          "description": "Only included when the suggestion type is \"entity\"."
+        },
+        "label": {
+          "type": "string",
+          "example": "Pizza",
+          "description": "Complete name of a place, a category of places, or a brand."
+        },
+        "query": {
+          "type": "string",
+          "example": "BRAND=Pizza;sid=143e1b8d-0358-4a13-ab6c-68da03235a1a;position=0;originalQuery=piz;source=autosuggest;",
+          "description": "A string value for the formatted query. Only included when the suggestion type is \"entity\"."
+        },
+        "type": {
+          "type": "string",
+          "example": "entity",
+          "description": "Type of suggestion. Possible values include \"query\" (as a category of places, or a brand), \"entity\" (as a point of interest), and etc."
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "auto-complete-api-controller",
+      "description": "the v2 API"
+    }
+  ]
+}
