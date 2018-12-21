@@ -86,11 +86,11 @@
   <button class="btn" onclick="filterSelection('team_d')"> Team D</button>
 </div>
 <div class="container shadow csl pretty-background catalog_sort team_a">
-  <p><strong>API Description</strong><br>
+  <p><strong>Service Description</strong><br>
 			This service facilitates the FordPass car share service and allows for activities such as managing favorites, locations and reservations.</p>
-			<p><strong>API Capabilities</strong><br>
-		<input type ="button" onclick="toggle_visibility('CarShareHide'); toggle_text('CarShareButton');" id="CarShareButton" value="Expand">
-			<div id="CarShareHide" style="display:none;" >
+			<p><strong>Service Capabilities</strong><br>
+		<input type ="button" onclick="toggle_visibility('capableHide'); toggle_text('capableButton');" id="capableButton" value="Expand">
+			<div id="capableHide" style="display:none;" >
 					<ul>
 						<li>Retrieving, adding, and deleting a favorite</li>
 						<li>Retrieving, adding, updating, and deleting a reservation</li>
@@ -101,7 +101,26 @@
 						<li>Make a reservation</li>
 						<li>Logging a user out</li>
 					</ul>
+		<p><strong>Accessing the Service</strong><br>
+		<table><tr><td>SLA
+		<input type ="button" onclick="toggle_visibility('slaHide'); toggle_text('slaButton');" id="slaButton" value="Expand">
+			<div id="slaHide" style="display:none;" >
+					Here is where you'd read the SLA if you want to.
 			</div>
+		</td>
+		<td>Requesting the Service
+		<input type ="button" onclick="toggle_visibility('requestHide'); toggle_text('requestButton');" id="requestButton" value="Expand">
+			<div id="requestHide" style="display:none;" >
+					This will contain request requirements such as who can request it, the process for requesting it, delivery expectations etc.
+			</div>
+		</td>
+		<td>Service costs
+		<input type ="button" onclick="toggle_visibility('costHide'); toggle_text('costButton');" id="costButton" value="Expand">
+			<div id="costHide" style="display:none;" >
+					service cost calculator (mvp 2)
+			</div>
+		</td>
+		</tr></table>
   </div>
   
   <div class="container shadow csl pretty-background catalog_sort team_b">
